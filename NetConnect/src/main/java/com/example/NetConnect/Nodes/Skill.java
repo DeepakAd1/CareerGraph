@@ -1,9 +1,12 @@
 package com.example.NetConnect.Nodes;
 
-import lombok.Data;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Node
 public class Skill {
@@ -16,13 +19,26 @@ public class Skill {
     private String proficiencyLevel; // e.g., "Intermediate"
     private int yearsOfExperience;
 
-    public Skill(){}
+    @Relationship(type = "REQUIRED_FOR", direction = Relationship.Direction.OUTGOING)
+    private List<RequiredFor> requiredFor = new ArrayList<>();
+
+
+    public Skill() {
+    }
 
     public Skill(String name, String certification, String proficiencyLevel, int yearsOfExperience) {
         this.name = name;
         this.certification = certification;
         this.proficiencyLevel = proficiencyLevel;
         this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public List<RequiredFor> getRequiredFor() {
+        return requiredFor;
+    }
+
+    public void setRequiredFor(List<RequiredFor> requiredFor) {
+        this.requiredFor = requiredFor;
     }
 
     public long getId() {

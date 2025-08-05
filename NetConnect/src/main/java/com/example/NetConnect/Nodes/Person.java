@@ -28,6 +28,27 @@ public class Person {
     @Relationship(type = "HAS_SKILL", direction = Relationship.Direction.OUTGOING)
     private List<SkillRelation> skills = new ArrayList<>();
 
+    @Relationship(type = "WORKS_AT" , direction = Relationship.Direction.OUTGOING)
+    private List<WorksAt> worksAt = new ArrayList<>();
+
+    @Relationship(type = "WORKS_AS", direction = Relationship.Direction.OUTGOING)
+    private List<WorksAs> worksAs = new ArrayList<>();
+
+    @Relationship(type = "KNOWS", direction = Relationship.Direction.OUTGOING)
+    private List<Knows> knows = new ArrayList<>();
+
+    @Relationship(type = "APPLIED_FOR", direction = Relationship.Direction.OUTGOING)
+    private List<AppliedFor> appliedForJobs = new ArrayList<>();
+
+    @Relationship(type = "INTERESTED_IN_SKILL", direction = Relationship.Direction.OUTGOING)
+    private List<InterestedInSkill> interestedSkills = new ArrayList<>();
+
+    @Relationship(type = "INTERESTED_IN_JOB", direction = Relationship.Direction.OUTGOING)
+    private List<InterestedInJob> interestedJobs = new ArrayList<>();
+
+    @Relationship(type = "INTERESTED_IN_COMPANY", direction = Relationship.Direction.OUTGOING)
+    private List<InterestedInCompany> interestedCompanies = new ArrayList<>();
+
     public Person() {
 
     }
@@ -40,6 +61,62 @@ public class Person {
         this.yearsOfExperience = yearsOfExperience;
         this.education = education;
         this.interests = interests;
+    }
+
+    public List<InterestedInSkill> getInterestedSkills() {
+        return interestedSkills;
+    }
+
+    public void setInterestedSkills(List<InterestedInSkill> interestedSkills) {
+        this.interestedSkills = interestedSkills;
+    }
+
+    public List<InterestedInJob> getInterestedJobs() {
+        return interestedJobs;
+    }
+
+    public void setInterestedJobs(List<InterestedInJob> interestedJobs) {
+        this.interestedJobs = interestedJobs;
+    }
+
+    public List<InterestedInCompany> getInterestedCompanies() {
+        return interestedCompanies;
+    }
+
+    public void setInterestedCompanies(List<InterestedInCompany> interestedCompanies) {
+        this.interestedCompanies = interestedCompanies;
+    }
+
+    public List<AppliedFor> getAppliedForJobs() {
+        return appliedForJobs;
+    }
+
+    public void setAppliedForJobs(List<AppliedFor> appliedForJobs) {
+        this.appliedForJobs = appliedForJobs;
+    }
+
+    public List<Knows> getKnows() {
+        return knows;
+    }
+
+    public void setKnows(List<Knows> knows) {
+        this.knows = knows;
+    }
+
+    public List<WorksAs> getWorksAs() {
+        return worksAs;
+    }
+
+    public void setWorksAs(List<WorksAs> worksAs) {
+        this.worksAs = worksAs;
+    }
+
+    public List<WorksAt> getWorksAt() {
+        return worksAt;
+    }
+
+    public void setWorksAt(List<WorksAt> worksAt) {
+        this.worksAt = worksAt;
     }
 
     public void setSkills(List<SkillRelation> skills){
