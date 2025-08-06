@@ -1,9 +1,7 @@
 package com.example.NetConnect.Nodes;
 
-import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;
 
-@RelationshipProperties
 public abstract class BaseInterestRelation<T> {
 
     private int interestLevel;

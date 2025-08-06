@@ -1,13 +1,12 @@
 package com.example.NetConnect.Nodes;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class Person {
     @GeneratedValue
     private Long id;
     private String name;
-    private String dob;
+    private Long dob;
     private String location;
     private String currentPosition;
     private int yearsOfExperience;
@@ -28,7 +27,7 @@ public class Person {
     @Relationship(type = "HAS_SKILL", direction = Relationship.Direction.OUTGOING)
     private List<SkillRelation> skills = new ArrayList<>();
 
-    @Relationship(type = "WORKS_AT" , direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "WORKS_AT", direction = Relationship.Direction.OUTGOING)
     private List<WorksAt> worksAt = new ArrayList<>();
 
     @Relationship(type = "WORKS_AS", direction = Relationship.Direction.OUTGOING)
@@ -53,7 +52,7 @@ public class Person {
 
     }
 
-    public Person(String name, String dob, String location, String currentPosition, int yearsOfExperience, List<String> education, List<String> interests) {
+    public Person(String name, Long dob, String location, String currentPosition, int yearsOfExperience, List<String> education, List<String> interests) {
         this.name = name;
         this.dob = dob;
         this.location = location;
@@ -119,11 +118,11 @@ public class Person {
         this.worksAt = worksAt;
     }
 
-    public void setSkills(List<SkillRelation> skills){
-        this.skills=skills;
+    public void setSkills(List<SkillRelation> skills) {
+        this.skills = skills;
     }
 
-    public List<SkillRelation> getSkills(){
+    public List<SkillRelation> getSkills() {
         return skills;
     }
 
@@ -143,11 +142,11 @@ public class Person {
         this.name = name;
     }
 
-    public String getDob() {
+    public Long getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Long dob) {
         this.dob = dob;
     }
 

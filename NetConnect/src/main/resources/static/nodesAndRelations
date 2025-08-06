@@ -6,7 +6,7 @@ Based on our discussion about refining the knowledge graph for your Personalized
 - **Person** (Represents users/professionals):
   - id: string (unique identifier, e.g., UUID)
   - name: string
-  - dob: date (date of birth)
+  - dateOfBirth: date (date of birth)
   - location: string (e.g., "New York, USA")
   - current_position: string (e.g., "Software Engineer")
   - years_of_experience: number (e.g., 5)
