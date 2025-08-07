@@ -64,3 +64,103 @@ These are directed for query efficiency but can be traversed bidirectionally in 
 - **Implementation Tip**: In Spring Data Neo4j, define these with annotations (e.g., @Node, @Relationship). For example, a Cypher query for job recommendations could be: `MATCH (p:Person)-[:HAS_SKILL {proficiency: >7}]->(s:Skill)-[:REQUIRED_FOR {match_score: >80}]->(j:Job) RETURN j.title, s.name`.
 
 This schema is refined for your project's needs—flexible yet efficient. If you want to adjust for specific features or see code examples, let me know!
+
+
+
+Great! Now that your `addPerson` API is complete and working, the next logical APIs to implement for your **Knowledge Graph (KG)** system would depend on what entities and relationships you want to work with next.
+
+Here’s a recommended **step-by-step roadmap**:
+
+---
+
+### ✅ 1. **Create Skill API (if not done)**
+
+* **POST /addSkill** — to add a new skill node.
+
+```json
+{
+  "name": "Java"
+}
+```
+
+---
+
+### ✅ 2. **Create Relationship API: Person HAS\_SKILL Skill**
+
+* **POST /person/{personId}/skill/{skillId}**
+
+  * This will create a `HAS_SKILL` relationship between a person and a skill.
+
+---
+
+### ✅ 3. **Get Person by ID**
+
+* **GET /person/{id}**
+
+  * To fetch full details of a person including relationships like `HAS_SKILL`, `WORKS_AT`, etc.
+
+---
+
+### ✅ 4. **Get All Persons / Filtered Search**
+
+* **GET /persons**
+
+  * Optional: Add filtering like `?skill=Java&location=Delhi`.
+
+---
+
+### ✅ 5. **Add Company API**
+
+* **POST /addCompany**
+
+```json
+{
+  "name": "TCS",
+  "location": "Mumbai"
+}
+```
+
+---
+
+### ✅ 6. **Create Relationship: Person WORKS\_AT Company**
+
+* **POST /person/{personId}/company/{companyId}**
+
+---
+
+### ✅ 7. **Add Job API**
+
+* **POST /addJob**
+
+```json
+{
+  "title": "Software Developer",
+  "company": "TCS"
+}
+```
+
+---
+
+### ✅ 8. **Create Relationship: Person WORKS\_AS Job**
+
+* **POST /person/{personId}/job/{jobId}**
+
+---
+
+### ✅ 9. **Recommendation/Search APIs (based on graph)**
+
+* Recommend people with a skill
+
+  * `GET /persons/skill/{skillName}`
+* Recommend jobs for person based on skill
+* Recommend connections (via `KNOWS` relationship)
+
+---
+
+### ✅ 10. **Delete APIs**
+
+* Delete a person, skill, company, job, or a relationship.
+
+---
+
+Would you like me to generate one of these APIs for you right now (e.g., `addSkill` or `personHasSkill`)?

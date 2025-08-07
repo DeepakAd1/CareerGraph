@@ -10,7 +10,6 @@ public abstract class BaseInterestRelation<T> {
     @TargetNode
     private T target;
 
-    // --- Getters and Setters ---
     public int getInterestLevel() {
         return interestLevel;
     }
