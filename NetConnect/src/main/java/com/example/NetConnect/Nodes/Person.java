@@ -1,12 +1,10 @@
 package com.example.NetConnect.Nodes;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +14,7 @@ public class Person {
     @Id
     @GeneratedValue
     private Long id;
+    private long userId;
     private String name;
     private Long dob;
     private String location;
@@ -52,7 +51,8 @@ public class Person {
 
     }
 
-    public Person(String name, Long dob, String location, String currentPosition, int yearsOfExperience, List<String> education, List<String> interests) {
+    public Person(long userId, String name, Long dob, String location, String currentPosition, int yearsOfExperience, List<String> education, List<String> interests) {
+        this.userId = userId;
         this.name = name;
         this.dob = dob;
         this.location = location;
@@ -60,6 +60,13 @@ public class Person {
         this.yearsOfExperience = yearsOfExperience;
         this.education = education;
         this.interests = interests;
+    }
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public List<InterestedInSkill> getInterestedSkills() {

@@ -1,5 +1,6 @@
 package com.example.NetConnect.Nodes;
 
+import lombok.Data;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -8,6 +9,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Node
 public class Company {
 
@@ -31,56 +33,28 @@ public class Company {
         this.description = description;
     }
 
-    public List<Posts> getJobPosts() {
-        return jobPosts;
-    }
-
     public void setJobPosts(List<Posts> jobPosts) {
         this.jobPosts = jobPosts;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
     }
 
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public long getEmployeeCount() {
-        return employeeCount;
-    }
-
     public void setEmployeeCount(long employeeCount) {
         this.employeeCount = employeeCount;
     }
 
-    public String getIndustryType() {
-        return industryType;
-    }
-
     public void setIndustryType(String industryType) {
         this.industryType = industryType;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
